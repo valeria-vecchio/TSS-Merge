@@ -93,7 +93,7 @@ public class MergeIntervals {
         //create the given set from the example
         ArrayList<Interval> intervals = new ArrayList<Interval>();
         Interval i1 = new Interval(25,30);
-        Interval i2 = new Interval(2,9);
+        Interval i2 = new Interval(2,19);
         Interval i3 = new Interval(14,23);
         Interval i4 = new Interval(4,8);
 
@@ -116,11 +116,16 @@ public class MergeIntervals {
 
         ArrayList<Interval> result = merge(intervals);
 
-        System.out.println("\nResult: ");
+        // print input
+        int inputLength = intervals.size();
+        for (int i = 0; i < inputLength; i++) {
+            System.out.println("[" + intervals.get(i).start + "," + intervals.get(i).end + "]");
+        }
 
         // print result intervals
-        int arrayLength = result.size();
-        for (int i = 0; i < arrayLength; i++) {
+        System.out.println("\nResult: ");
+        int resultLength = result.size();
+        for (int i = 0; i < resultLength; i++) {
             System.out.println("[" + result.get(i).start + "," + result.get(i).end + "]");
         }
 
