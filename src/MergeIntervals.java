@@ -87,6 +87,9 @@ public class MergeIntervals {
 
 
     public static void main(String args[]) {
+        //measure time
+        final long timeStart = System.currentTimeMillis();
+
         // create a random set of intervals
         ArrayList<Interval> randomIntervals = generateRandomIntervals();
 
@@ -100,5 +103,9 @@ public class MergeIntervals {
         for(int i = 0; i < arrayLength; i++) {
             System.out.println("[" + result.get(i).start + "," + result.get(i).end + "]");
         }
+
+        //measure endtime and print final runtime
+        final long timeEnd = System.currentTimeMillis();
+        System.out.println("\nRuntime: " + (timeEnd - timeStart) + " millisec.");
     }
 }
