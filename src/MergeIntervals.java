@@ -97,31 +97,24 @@ public class MergeIntervals {
         Interval i3 = new Interval(14,23);
         Interval i4 = new Interval(4,8);
 
+        //======================================================================
+        //create a set of negative intervals
+        /*ArrayList<Interval> intervals = new ArrayList<Interval>();
+        Interval i1 = new Interval(-5,-3);
+        Interval i2 = new Interval(-4,-2);
+        Interval i3 = new Interval(-15,-7);
+        Interval i4 = new Interval(-1,5);*/
+
+        //======================================================================
+        // create a random set of intervals and merge them
+        //ArrayList<Interval> intervals = generateRandomIntervals();
+
         intervals.add(i1);
         intervals.add(i2);
         intervals.add(i3);
         intervals.add(i4);
 
-        //expected output Output: [2,23] [25,30]
-        ArrayList<Interval>  result = merge(intervals);
-
-        //create a set of negative intervals
-        /*ArrayList<Interval> negativeIntervals = new ArrayList<Interval>();
-        Interval i1 = new Interval(-5,-3);
-        Interval i2 = new Interval(-4,-2);
-        Interval i3 = new Interval(-15,-7);
-        Interval i4 = new Interval(-1,5);
-
-        negativeIntervals.add(i1);
-        negativeIntervals.add(i2);
-        negativeIntervals.add(i3);
-        negativeIntervals.add(i4);
-
-        ArrayList<Interval>  result = merge(negativeIntervals);*/
-
-        // create a random set of intervals and merge them
-        /*ArrayList<Interval> randomIntervals = generateRandomIntervals();
-        ArrayList<Interval> result = merge(randomIntervals);*/
+        ArrayList<Interval> result = merge(intervals);
 
         System.out.println("\nResult: ");
 
@@ -131,7 +124,7 @@ public class MergeIntervals {
             System.out.println("[" + result.get(i).start + "," + result.get(i).end + "]");
         }
 
-        // measure endtime and print final runtime
+        // measure time and print final runtime
         final long timeEnd = System.currentTimeMillis();
         System.out.println("\nRuntime: " + (timeEnd - timeStart) + " millisec.");
 
