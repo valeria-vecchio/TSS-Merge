@@ -3,6 +3,11 @@ import java.util.*;
 
 public class MergeIntervals {
 
+    /**
+     * method to merge overlapping intervals
+     * @param givenIntervals
+     * @return stack of merged intervals
+     */
     private static Stack<Interval> merge (ArrayList<Interval> givenIntervals){
         // Create an empty stack of intervals
         Stack<Interval> stack = new Stack<>();
@@ -49,6 +54,10 @@ public class MergeIntervals {
         return stack;
     }
 
+    /**
+     * create a random set of intervals for easier scaling to proof perfomance
+     * @return intervals
+     */
     private static ArrayList<Interval> generateRandomIntervals(){
         ArrayList<Interval> intervals = new ArrayList<Interval>();
         Interval interval;
