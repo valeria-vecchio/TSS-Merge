@@ -10,7 +10,7 @@ These instructions will get you a copy of the project up and running on your loc
 This project was written with Java 11. To avoid any problems make sure Java 11 is installed on your machine.
 Otherwise, you can download it [here](https://docs.aws.amazon.com/corretto/latest/corretto-11-ug/downloads-list.html).
 
-Clone this repository to your local machine and open it to the IDE of your choice.
+Clone this repository to your local machine and open it in the IDE of your choice.
 I recommend using [IntelliJ Community Edition](https://www.jetbrains.com/de-de/idea/download/#section=windows) since I am using it to work on this project.
 
 ### Run the Project
