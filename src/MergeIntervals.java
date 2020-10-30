@@ -104,8 +104,20 @@ public class MergeIntervals {
             System.out.println("[" + result.get(i).start + "," + result.get(i).end + "]");
         }
 
-        //measure endtime and print final runtime
+        // measure endtime and print final runtime
         final long timeEnd = System.currentTimeMillis();
         System.out.println("\nRuntime: " + (timeEnd - timeStart) + " millisec.");
+
+        // print memory usage
+        Runtime runtime = Runtime.getRuntime();
+        int mb = 1024 * 1024;
+
+        double availableMemory = runtime.totalMemory() / mb;
+        double freeMemory = runtime.freeMemory() / mb;
+        double usedMemory = availableMemory - freeMemory;
+
+        System.out.println("\nTotal Memory: " + availableMemory);
+        System.out.println("Free Memory: " + freeMemory);
+        System.out.println("Used Memory: " + usedMemory);
     }
 }
