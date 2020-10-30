@@ -105,6 +105,20 @@ public class MergeIntervals {
         //expected output Output: [2,23] [25,30]
         ArrayList<Interval>  result = merge(intervals);
 
+        //create a set of negative intervals
+        /*ArrayList<Interval> negativeIntervals = new ArrayList<Interval>();
+        Interval i1 = new Interval(-5,-3);
+        Interval i2 = new Interval(-4,-2);
+        Interval i3 = new Interval(-15,-7);
+        Interval i4 = new Interval(-1,5);
+
+        negativeIntervals.add(i1);
+        negativeIntervals.add(i2);
+        negativeIntervals.add(i3);
+        negativeIntervals.add(i4);
+
+        ArrayList<Interval>  result = merge(negativeIntervals);*/
+
         // create a random set of intervals and merge them
         /*ArrayList<Interval> randomIntervals = generateRandomIntervals();
         ArrayList<Interval> result = merge(randomIntervals);*/
