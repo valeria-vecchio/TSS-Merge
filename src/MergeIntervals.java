@@ -90,9 +90,24 @@ public class MergeIntervals {
         // measure time
         final long timeStart = System.currentTimeMillis();
 
+        //create the given set from the example
+        ArrayList<Interval> intervals = new ArrayList<Interval>();
+        Interval i1 = new Interval(25,30);
+        Interval i2 = new Interval(2,9);
+        Interval i3 = new Interval(14,23);
+        Interval i4 = new Interval(4,8);
+
+        intervals.add(i1);
+        intervals.add(i2);
+        intervals.add(i3);
+        intervals.add(i4);
+
+        //expected output Output: [2,23] [25,30]
+        ArrayList<Interval>  result = merge(intervals);
+
         // create a random set of intervals and merge them
-        ArrayList<Interval> randomIntervals = generateRandomIntervals();
-        ArrayList<Interval> result = merge(randomIntervals);
+        /*ArrayList<Interval> randomIntervals = generateRandomIntervals();
+        ArrayList<Interval> result = merge(randomIntervals);*/
 
         System.out.println("\nResult: ");
 
