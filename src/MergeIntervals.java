@@ -3,6 +3,11 @@ import java.util.*;
 
 public class MergeIntervals {
 
+    /**
+     * method to merge overlapping intervals
+     * @param givenIntervals
+     * @return stack of merged intervals
+     */
     private static Stack<Interval> merge (ArrayList<Interval> givenIntervals){
         // Create an empty stack of intervals
         Stack<Interval> stack = new Stack<>();
@@ -49,22 +54,46 @@ public class MergeIntervals {
         return stack;
     }
 
-    public static void main(String args[]) {
-        // create a set of intervals
+    /**
+     * create a random set of intervals for easier scaling to proof perfomance
+     * @return intervals
+     */
+    private static ArrayList<Interval> generateRandomIntervals(){
         ArrayList<Interval> intervals = new ArrayList<Interval>();
+        Interval interval;
 
-        Interval i1 = new Interval(25,30);
-        Interval i2 = new Interval(2,19);
-        Interval i3 = new Interval(14,23);
-        Interval i4 = new Interval(4,8);
+        System.out.println("Starting Intervals: ");
 
-        intervals.add(i1);
-        intervals.add(i2);
-        intervals.add(i3);
-        intervals.add(i4);
+        //generate e.g. 5 intervals with random values
+        for(int i = 0; i < 5; i++) {
+
+            // generate a random number between [0 - 40].
+            int random1 = (int)(30.0 * Math.random());
+            int random2 = (int)(30.0 * Math.random());
+
+            //check whether which random generated number is smaller
+            if(random1 < random2) {
+                interval = new Interval(random1, random2);
+            } else {
+                interval = new Interval(random2, random1);
+            }
+
+            intervals.add(interval);
+            System.out.println("[" + interval.start + "," + interval.end + "]");
+        }
+
+        return intervals;
+    }
+
+
+    public static void main(String args[]) {
+        // create a random set of intervals
+        ArrayList<Interval> randomIntervals = generateRandomIntervals();
 
         Stack<Interval> result;
-        result = merge(intervals);
+        result = merge(randomIntervals);
+
+        System.out.println("\nResult: ");
 
         // print result intervals
         int arrayLength = result.size();
