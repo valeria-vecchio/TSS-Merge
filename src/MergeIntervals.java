@@ -9,12 +9,12 @@ public class MergeIntervals {
      * @param givenIntervals
      * @return stack of merged intervals
      */
-    private static Stack<Interval> merge(ArrayList<Interval> givenIntervals) {
+    private static ArrayList<Interval> merge(ArrayList<Interval> givenIntervals) {
         // Create an empty stack of intervals
-        Stack<Interval> stack = new Stack<>();
+        ArrayList<Interval> stack = new ArrayList<Interval>();
 
         // check if the given data has at least one interval
-        if (givenIntervals.isEmpty()) {
+        if (givenIntervals.size() <= 1) {
             return stack;
         }
 
@@ -26,7 +26,7 @@ public class MergeIntervals {
         });
 
         // push first interval to the stack
-        stack.push(givenIntervals.get(0));
+        stack.add(givenIntervals.get(0));
 
         // to increase performance set size of givenIntervals to a variable
         int intervalsSize = givenIntervals.size();
@@ -35,19 +35,19 @@ public class MergeIntervals {
         // after the first is already in the stack
         for (int i = 1; i < intervalsSize; i++) {
             // get interval from stack top
-            Interval top = stack.peek();
+            Interval top = stack.get(stack.size() - 1);
 
             // if current interval is not overlapping with stack top,
             // push it to the stack
             if (top.end < givenIntervals.get(i).start)
-                stack.push(givenIntervals.get(i));
+                stack.add(givenIntervals.get(i));
 
                 // Otherwise update the ending time of top if ending of current
                 // interval is more
             else if (top.end < givenIntervals.get(i).end) {
                 top.end = givenIntervals.get(i).end;
-                stack.pop();
-                stack.push(top);
+                stack.remove(stack.size() - 1);
+                stack.add(top);
             }
         }
         return stack;
@@ -64,14 +64,14 @@ public class MergeIntervals {
 
         System.out.println("Starting Intervals: ");
 
-        //generate e.g. 5 intervals with random values
+        // generate e.g. 5 intervals with random values
         for (int i = 0; i < 5; i++) {
 
             // generate a random number between [0 - 40].
             int random1 = (int) (30.0 * Math.random());
             int random2 = (int) (30.0 * Math.random());
 
-            //check whether which random generated number is smaller
+            // check whether which random generated number is smaller
             if (random1 < random2) {
                 interval = new Interval(random1, random2);
             } else {
@@ -87,14 +87,34 @@ public class MergeIntervals {
 
 
     public static void main(String args[]) {
-        //measure time
+        // measure time
         final long timeStart = System.currentTimeMillis();
 
-        // create a random set of intervals
-        ArrayList<Interval> randomIntervals = generateRandomIntervals();
+        //create the given set from the example
+        ArrayList<Interval> intervals = new ArrayList<Interval>();
+        Interval i1 = new Interval(25,30);
+        Interval i2 = new Interval(2,9);
+        Interval i3 = new Interval(14,23);
+        Interval i4 = new Interval(4,8);
 
-        Stack<Interval> result;
-        result = merge(randomIntervals);
+        //======================================================================
+        //create a set of negative intervals
+        /*ArrayList<Interval> intervals = new ArrayList<Interval>();
+        Interval i1 = new Interval(-5,-3);
+        Interval i2 = new Interval(-4,-2);
+        Interval i3 = new Interval(-15,-7);
+        Interval i4 = new Interval(-1,5);*/
+
+        //======================================================================
+        // create a random set of intervals and merge them
+        //ArrayList<Interval> intervals = generateRandomIntervals();
+
+        intervals.add(i1);
+        intervals.add(i2);
+        intervals.add(i3);
+        intervals.add(i4);
+
+        ArrayList<Interval> result = merge(intervals);
 
         System.out.println("\nResult: ");
 
@@ -104,7 +124,7 @@ public class MergeIntervals {
             System.out.println("[" + result.get(i).start + "," + result.get(i).end + "]");
         }
 
-        // measure endtime and print final runtime
+        // measure time and print final runtime
         final long timeEnd = System.currentTimeMillis();
         System.out.println("\nRuntime: " + (timeEnd - timeStart) + " millisec.");
 
